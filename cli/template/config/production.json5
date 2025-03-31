@@ -1,0 +1,10 @@
+{
+  logs: {
+    level: 'info',
+    console: false,
+    request: false
+  },
+  views: {
+    cache: true
+  }
+}

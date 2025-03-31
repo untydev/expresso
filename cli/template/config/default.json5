@@ -1,0 +1,17 @@
+{
+  src: {
+    path: 'src'
+  },
+  logs: {
+    path: 'logs'
+  },
+  data: {
+    path: 'data'
+  },
+  server: {
+    port: 8000
+  },
+  parser: {
+    format: 'json'
+  }
+}
