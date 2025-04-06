@@ -137,3 +137,21 @@ Sets a path to the directory where application data will be stored.
 - **Development value:** `data`
 - **Production value:** `data`
 - **Environment alias:** `DATA_PATH`
+
+## Route options
+
+### `.rateLimit.window`
+
+### `.rateLimit.limit`
+
+### `.rateLimit.message`
+
+### `.slowDown.window`
+
+### `.slowDown.after`
+
+### `.slowDown.delay`
+
+### `.slowDown.message`
+
+### `.validateBody`
