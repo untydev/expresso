@@ -1,12 +1,19 @@
 {
+  app: {
+    port: 'PORT',
+    domain: 'DOMAIN'
+  },
+
   logs: {
     path: 'LOGS_PATH',
     level: 'LOGS_LEVEL'
   },
+
   data: {
     path: 'DATA_PATH'
   },
-  server: {
-    port: 'SERVER_PORT'
+  
+  session: {
+    keys: 'SESSION_KEYS'
   }
 }

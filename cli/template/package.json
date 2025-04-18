@@ -1,0 +1,11 @@
+{
+  "name": "{{ name }}",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "standard",
+    "start": "node {{ src }}"
+  },
+  "dependencies": {
+  }
+}

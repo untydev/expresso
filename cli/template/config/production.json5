@@ -4,6 +4,15 @@
     console: false,
     request: false
   },
+
+  models: {
+    path: 'models.db',
+    sync: {
+      force: false,
+      alter: false
+    }
+  },
+  
   views: {
     cache: true
   }
