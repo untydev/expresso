@@ -1,2 +1,8 @@
 # Node modules
 node_modules
+
+# VSCode
+.vscode
+
+# Temp directory
+tmp

@@ -1,0 +1,11 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="18px">Welcome to Our App!</mj-text>
+        <mj-text>Thanks for activating your account. We're happy to have you onboard.</mj-text>
+        <mj-text>If you have any questions, feel free to reach out!</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

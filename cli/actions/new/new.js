@@ -54,6 +54,7 @@ function installDependencies (args, target) {
   try {
     const options = { cwd: target, encoding: 'utf8' }
     execSync('npm install', options)
+    execSync('npm i -D nodemon', options)
     execSync('npm i -D standard', options)
   } catch (error) {
     console.error(pc.red('Failed to create the project'))
@@ -61,46 +62,56 @@ function installDependencies (args, target) {
   }
 }
 
-export default function (args) {
-  const source = nodePath.join(__dirname, '..', '..', 'template')
+export default function (context) {
+  const { args, CliError } = context
+  const source = nodePath.join(__dirname, '..', '..', 'templates', 'basic')
   const target = args._[0] ? nodePath.join(nodeProc.cwd(), args._[0]) : nodeProc.cwd()
 
   nodeFs.mkdirSync(target, { recursive: true })
 
   ensureEmptyTarget(args, target)
 
-  console.log(pc.cyan('Copying files...'))
-
-  if (!nodeFs.existsSync(nodePath.join(target, 'config'))) {
+  const configExists = nodeFs.existsSync(nodePath.join(target, 'config'))
+  if (!configExists || args.force) {
     copyDirectory(nodePath.join(source, 'config'), nodePath.join(target, 'config'))
   } else {
-    console.log(pc.dim('Directory already exists: config'))
+    throw new CliError('Directory already exists: config')
   }
 
-  if (!nodeFs.existsSync(nodePath.join(target, 'app'))) {
-    copyDirectory(nodePath.join(source, 'app'), nodePath.join(target, 'app'))
+  const routesExists = nodeFs.existsSync(nodePath.join(target, 'routes'))
+  if (!routesExists || args.force) {
+    copyDirectory(nodePath.join(source, 'routes'), nodePath.join(target, 'routes'))
   } else {
-    console.log(pc.dim('Directory already exists: app'))
+    throw new CliError('Directory already exists: routes')
   }
 
-  if (!nodeFs.existsSync(nodePath.join(target, 'package.json'))) {
+  const binExists = nodeFs.existsSync(nodePath.join(target, 'bin'))
+  if (!binExists || args.force) {
+    copyDirectory(nodePath.join(source, 'bin'), nodePath.join(target, 'bin'))
+  } else {
+    throw new CliError('Directory already exists: bin')
+  }
+
+  const pkgExists = nodeFs.existsSync(nodePath.join(target, 'package.json'))
+  if (!pkgExists || args.force) {
     renderFile(nodePath.join(source, 'package.json'), nodePath.join(target, 'package.json'), {
       name: 'Expresso App',
-      src: './app/app.js',
+      bin: './bin'
     })
   } else {
-    console.log(pc.dim('File already exists: package.json'))
+    throw new CliError('File already exists: package.json')
   }
 
-  if (!nodeFs.existsSync(nodePath.join(target, '.gitignore'))) {
+  const gitIgnoreExists = nodeFs.existsSync(nodePath.join(target, '.gitignore'))
+  if (!gitIgnoreExists || args.force) {
     nodeFs.copyFileSync(nodePath.join(source, '.gitignore'), nodePath.join(target, '.gitignore'))
   } else {
-    console.log(pc.dim('File already exists: .gitignore'))
+    throw new CliError('File already exists: .gitignore')
   }
 
   if (args.install) {
     installDependencies(args, target)
   }
 
-  console.log(pc.green(`Done 🥳 To start your app, type 'npm start'`))
+  return 'Done 🥳 To start your app, type \'npm start\''
 }

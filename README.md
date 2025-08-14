@@ -26,6 +26,8 @@ node src/app.js
 
 ## Docs
 
+- [Guide](./doc/guide.md)
 - [Config](./doc/config.md)
+- [Auth](./doc/auth.md)
 - [API](./doc/api.md)
 - [CLI](./doc/cli.md)

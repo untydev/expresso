@@ -1,0 +1,53 @@
+{
+  src: '',
+  port: 8000,
+  name: 'Expresso App',
+  domain: 'example.com',
+  proxy: {
+    trust: [
+      'loopback'
+    ]
+  },
+  static: {
+    paths: [{
+      path: 'public',
+      prefix: '/public',
+      index: false
+    }]
+  },
+  logs: {
+    path: 'logs'
+  },
+  data: {
+    path: 'data'
+  },
+  http: {
+    body: {
+      formats: {
+        json: {
+          limit: '10kb'
+        },
+        urlencoded: {
+          limit: '10kb',
+          extended: false
+        }
+      }
+    }
+  },
+  session: {
+    store: 'cookie',
+    age: '7d'
+  },
+  models: {
+    store: 'sqlite'
+  },
+  views: {
+    engine: 'liquid'
+  },
+  jobs: {
+    adapter: 'better-queue'
+  },
+  emails: {
+    provider: 'file'
+  }
+}

@@ -1,0 +1,13 @@
+{% layout "layout" %}
+
+{% block title %}Activate{% endblock %}
+
+{% block content %}
+  <p>{{ message }}</p>
+  
+  <h1>Activate Your Account</h1>
+  <form action="/activate?activationCode={{ activationCode }}" method="POST">
+
+    <button type="submit">Activate now</button>
+  </form>
+{% endblock %}

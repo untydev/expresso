@@ -1,0 +1,20 @@
+{
+  logs: {
+    level: 'debug',
+    console: true,
+    request: true
+  },
+  jobs: {
+    path: 'jobs.dev.db'
+  },
+  models: {
+    path: 'models.dev.db',
+    sync: {
+      force: true,
+      alter: true
+    }
+  },  
+  views: {
+    cache: false
+  }
+}

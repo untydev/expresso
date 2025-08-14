@@ -53,7 +53,7 @@ Sets a path to the directory where application logs will be stored.
 
 ### `logs.level`
 
-Sets the log level. Available values: `emerg`, `alert`, `crit`, `error`, `warning`, `notice`, `info`, `debug`.
+Sets the log level. Available values: `emerg`, `alert`, `crit`, `error`, `warning`, `notice`, `info`, `debug`, `verbose`.
 
 - **Development value:** `debug`
 - **Production value:** `info`
@@ -102,7 +102,7 @@ Specifies the maximum length of HTTP body requests.
 
 Selects a session store: `false`, `cookie`.
 
-- **Default value:** `false`
+- **Default value:** `cookie`
 
 ### `session.age`
 
@@ -168,25 +168,22 @@ A queue used for handling job execution: `false`, `better-queue`.
 
 - **Default value:** `better-queue`
 
+### `job.path`
+
+A path, relative to `data.path` for the jobs database.
+
+- **Development value:** `jobs.dev.db`
+- **Production value:** `jobs.db`
+
 ## Emails
 
 ### `emails.provider`
 
-A provider used for sending emails: `false`, `resend`.
+A provider used for sending emails: `false`, `file`, `smtp`, `resend`.
 
-- **Default value:** `false`
+- **Default value:** `file`
 
 ## Services
-
-### `services.auth.enabled`
-
-Enables or disables Auth service.
-
-### `services.sqlite.enabled`
-
-Enables or disables SQLite database support.
-
-- **Default value:** `false`
 
 ### `services.*.enabled`
 
