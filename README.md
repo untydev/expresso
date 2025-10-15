@@ -21,7 +21,7 @@ expresso init
 Start the application:
 
 ```sh
-node src/app.js
+node bin/start.js
 ```
 
 ## Docs
