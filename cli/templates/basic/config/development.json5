@@ -4,6 +4,9 @@
     console: true,
     request: true
   },
+  session: {
+    secure: false
+  },
   jobs: {
     path: 'jobs.dev.db'
   },

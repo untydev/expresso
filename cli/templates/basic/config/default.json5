@@ -36,7 +36,8 @@
   },
   session: {
     store: 'cookie',
-    age: '7d'
+    maxAge: '7d',
+    sameSite: 'strict'
   },
   models: {
     store: 'sqlite'
